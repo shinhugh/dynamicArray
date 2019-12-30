@@ -5,7 +5,11 @@ A run-time flexible array that holds pointers to arbitrary data.
 A `dynamicArray` instance holds the *memory addresses* of data stored elsewhere
 in memory, *not the data itself*.<br/>
 The type of the data does not matter (the array holds `void *` pointers). This
-allows for flexible usage but requires type-casting upon retrieving elements.
+allows for flexible usage but requires type-casting upon retrieving
+elements.
+
+Do *not* access/modify the members of the struct `dynamicArray` directly;
+behavior is undefined. Utilize the provided functions instead.
 
 ## Functions
 
@@ -14,22 +18,30 @@ first argument. The library is structured to imitate dynamic object-oriented
 programming.<br/>
 Take a peek inside `dynamicArray.h` for more details on each function.
 
-#### `dyArr_getElement()`<br/>
+#### `dyArr_getElement()`
 Access the pointer stored at the specified index.
 
-#### `dyArr_setElement()`<br/>
+#### `dyArr_setElement()`
 Store a pointer at the specified index.
 
-#### `dyArr_appendElement()`<br/>
+#### `dyArr_appendElement()`
 Append a pointer to the back, as the last element.
 
-#### `dyArr_getCount()`<br/>
+#### `dyArr_removeElement()`
+Remove the pointer at the specified index. This does not free the memory held by
+the element itself at the address inside the removed pointer.
+
+#### `dyArr_removeAllElements()`
+Remove all pointers. This does not free the memory held by the elements
+themselves at the addresses inside the removed pointers.
+
+#### `dyArr_getCount()`
 Get the total number of elements stored.
 
-#### `dyArr_initialize()`<br/>
+#### `dyArr_initialize()`
 Initialize the array. This prepares it for usage. It must be called first.
 
-#### `dyArr_deinitialize()`<br/>
+#### `dyArr_deinitialize()`
 De-initialize the array. This frees any memory allocated by the array. It must
 be called if `dyArr_initialize()` was called previously. To avoid a memory
 leak, make the call before reference to the array is lost. Note that this does
@@ -37,6 +49,15 @@ not free the `dynamicArray` instance itself but any memory that it had allocated
 in its lifetime. If the array was created on the heap, the user must still
 manually free that memory. This also does not free the memory used by the data
 itself.
+
+## Flags
+
+Flags are global scope `unsigned char` values.<br/>
+`0` means unset. Any other value means set.
+
+#### `DYARR_OUT_OF_BOUNDS`
+Set when a function takes in an index that is not less than the number of
+elements.
 
 ## Build
 
@@ -55,6 +76,8 @@ When compiling your code, include `libdynamicArray.a` as such:
 ```shell
 gcc [your files] -I [path to dynamicArray.h] -L [path to libdynamicArray.a] -l dynamicArray
 ```
+Otherwise, the structure is simple enough where you may avoid the makefile
+altogether. Just compile the `.c` file and link the `.o` file manually.
 
 ## Example usage
 
