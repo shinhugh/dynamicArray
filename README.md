@@ -5,8 +5,7 @@ A run-time flexible array that holds pointers to arbitrary data.
 A `dynamicArray` instance holds the *memory addresses* of data stored elsewhere
 in memory, *not the data itself*.<br/>
 The type of the data does not matter (the array holds `void *` pointers). This
-allows for flexible usage but requires type-casting upon retrieving
-elements.
+allows for flexible usage but requires type-casting upon retrieving elements.
 
 Do *not* access/modify the members of the struct `dynamicArray` directly;
 behavior is undefined. Utilize the provided functions instead.
@@ -32,11 +31,13 @@ Concatenate two arrays and place the result in a new array.
 
 #### `dyArr_removeElement()`
 Remove the pointer at the specified index. This does not free the memory held by
-the element itself at the address inside the removed pointer, so free that first if necessary.
+the element itself at the address inside the removed pointer, so free that first
+if necessary.
 
 #### `dyArr_removeAllElements()`
 Remove all pointers. This does not free the memory held by the elements
-themselves at the addresses inside the removed pointers, so free those first if necessary.
+themselves at the addresses inside the removed pointers, so free those first if
+necessary.
 
 #### `dyArr_getCount()`
 Get the total number of elements stored.
@@ -46,16 +47,18 @@ Initialize the array. This prepares it for usage. It must be called first.
 
 #### `dyArr_deinitialize()`
 De-initialize the array. This frees any memory allocated by the array. It must
-be called if `dyArr_initialize()` was called previously. To avoid a memory
-leak, make the call before reference to the array is lost. Note that this does
-not free the `dynamicArray` instance itself but any memory that it had allocated
-in its lifetime. If the array was created on the heap, the user must still
-manually free that memory. This also does not free the memory pointed at by the array elements.
+be called if `dyArr_initialize()` was called previously. To avoid a memory leak,
+make the call before reference to the array is lost. Note that this does not
+free the `dynamicArray` instance itself but any memory that it had allocated in
+its lifetime. If the array was created on the heap, the user must still manually
+free that memory. This also does not free the memory pointed at by the array
+elements.
 
 ## Flags
 
 Flags are global scope `unsigned char` values.<br/>
-`0` means unset. Any other value means set.
+`0` means unset. Any other value means set.<br/>
+All flags are reset at the beginning of a function call.
 
 #### `DYARR_OUT_OF_BOUNDS`
 Set when a function takes in an index that is not less than the number of
@@ -67,8 +70,8 @@ elements.
 2. Run `make`. This generates the file `libdynamicArray.a`, which is a static
 library that contains the implementation for the functions declared in
 `dynamicArray.h`.
-3. You may remove all files from this repository besides `libdynamicArray.a`
-and `dynamicArray.h`. The two files can be placed anywhere.
+3. You may remove all files from this repository besides `libdynamicArray.a` and
+`dynamicArray.h`. The two files can be placed anywhere.
 
 When using this library, make sure to have in your C source code:
 ```c

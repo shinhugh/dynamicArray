@@ -1,8 +1,7 @@
 /*
- * A struct that functions as an array holding miscellaneous
- * pointers.
- * Dynamically allocates more memory on the heap when a new element
- * does not fit in the current allocation.
+ * A struct that functions as an array holding miscellaneous pointers.
+ * Dynamically allocates more memory on the heap when a new element does not fit
+ * in the current allocation.
  * Members of the struct should not be accessed/modified directly.
  */
 
@@ -54,7 +53,8 @@ void dyArr_appendElement(dynamicArray *array, const void *element);
  * Allocates memory for new dynamicArray. Make sure to deinitialize and free.
  * Return: Address of newly allocated memory for the result dynamicArray
  */
-dynamicArray * dyArr_concatenate(const dynamicArray *arrayA, const dynamicArray *arrayB);
+dynamicArray * dyArr_concatenate(const dynamicArray *arrayA,
+const dynamicArray *arrayB);
 
 /*
  * Remove the element at the specified index.
@@ -79,15 +79,15 @@ unsigned int dyArr_getCount(const dynamicArray *array);
 /*
  * Initialize an array.
  * Must be called a single time before array is used.
- * Every call should be followed by a dyArr_free() call before
- * reference to array is lost.
+ * Every call should be followed by a dyArr_free() call before reference to
+ * array is lost.
  */
 void dyArr_initialize(dynamicArray *array);
 
 /*
  * Deinitialize an array.
- * Array should not be used after call, unless dyArr_initialize() is
- * called again.
+ * Array should not be used after call, unless dyArr_initialize() is called
+ * again.
  * Must be called a single time before reference to array is lost to avoid
  * memory leaks.
  * Must be preceded by a dyArr_initialize() call.
@@ -95,5 +95,6 @@ void dyArr_initialize(dynamicArray *array);
  */
 void dyArr_deinitialize(dynamicArray *array);
 
+// ------------------------------------------------------------
 
 #endif

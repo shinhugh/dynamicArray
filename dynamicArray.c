@@ -59,7 +59,7 @@ void dyArr_appendElement(dynamicArray *array, const void *element) {
   // Resize allocation if necessary
   if(array_count >= array->alloc_size) {
     elements_trans = malloc(EXPANSION_FACTOR * array->alloc_size
-      * sizeof(void*));
+    * sizeof(void*));
     for(i = 0; i < array_count; i++) {
       elements_trans[i] = array->elements[i];
     }
@@ -76,7 +76,8 @@ void dyArr_appendElement(dynamicArray *array, const void *element) {
 
 // ------------------------------------------------------------
 
-dynamicArray * dyArr_concatenate(const dynamicArray *arrayA, const dynamicArray *arrayB) {
+dynamicArray * dyArr_concatenate(const dynamicArray *arrayA,
+const dynamicArray *arrayB) {
 
   unsigned int i;
   dynamicArray *result;
@@ -86,7 +87,8 @@ dynamicArray * dyArr_concatenate(const dynamicArray *arrayA, const dynamicArray 
 
   DYARR_OUT_OF_BOUNDS = 0;
 
-  // Allocate memory for new dynamicArray instance with enough capacity to hold contents of both arrayA and arrayB
+  // Allocate memory for new dynamicArray instance with enough capacity to hold
+  // contents of both arrayA and arrayB
   result = malloc(sizeof(dynamicArray));
   alloc_size = 1;
   while(alloc_size < arrayA_count + arrayB_count) {
