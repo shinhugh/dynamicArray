@@ -1,8 +1,5 @@
 /*
- * A struct that functions as an array holding miscellaneous
- * pointers.
- * Dynamically allocates more memory on the heap when a new element
- * does not fit in the current allocation.
+ * Refer to dynamicArray.h for description.
  */
 
 #include <stdlib.h>
@@ -10,11 +7,11 @@
 
 #define EXPANSION_FACTOR 2
 
-/************************************************************/
+// ------------------------------------------------------------
 
 unsigned char DYARR_OUT_OF_BOUNDS;
 
-/************************************************************/
+// ------------------------------------------------------------
 
 void * dyArr_getElement(dynamicArray *array, unsigned int index) {
 
@@ -31,7 +28,7 @@ void * dyArr_getElement(dynamicArray *array, unsigned int index) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 unsigned char dyArr_setElement(dynamicArray *array, unsigned int index,
   void *element) {
@@ -49,7 +46,7 @@ unsigned char dyArr_setElement(dynamicArray *array, unsigned int index,
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 void dyArr_appendElement(dynamicArray *array, void *element) {
 
@@ -76,7 +73,7 @@ void dyArr_appendElement(dynamicArray *array, void *element) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 void dyArr_removeElement(dynamicArray *array, unsigned int index) {
 
@@ -100,7 +97,7 @@ void dyArr_removeElement(dynamicArray *array, unsigned int index) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 void dyArr_removeAllElements(dynamicArray *array) {
 
@@ -111,7 +108,7 @@ void dyArr_removeAllElements(dynamicArray *array) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 unsigned int dyArr_getCount(dynamicArray *array) {
 
@@ -122,7 +119,7 @@ unsigned int dyArr_getCount(dynamicArray *array) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 void dyArr_initialize(dynamicArray *array) {
 
@@ -135,7 +132,7 @@ void dyArr_initialize(dynamicArray *array) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
 
 void dyArr_deinitialize(dynamicArray *array) {
 
@@ -148,4 +145,4 @@ void dyArr_deinitialize(dynamicArray *array) {
 
 }
 
-/************************************************************/
+// ------------------------------------------------------------
