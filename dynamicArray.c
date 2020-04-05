@@ -31,7 +31,7 @@ void * dyArr_getElement(const dynamicArray *array, unsigned int index) {
 // ------------------------------------------------------------
 
 void dyArr_setElement(dynamicArray *array, unsigned int index,
-  const void *element) {
+  void *element) {
 
   DYARR_OUT_OF_BOUNDS = 0;
 
@@ -48,7 +48,7 @@ void dyArr_setElement(dynamicArray *array, unsigned int index,
 
 // ------------------------------------------------------------
 
-void dyArr_appendElement(dynamicArray *array, const void *element) {
+void dyArr_appendElement(dynamicArray *array, void *element) {
 
   unsigned int i;
   void **elements_trans;

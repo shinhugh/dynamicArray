@@ -40,12 +40,12 @@ void * dyArr_getElement(const dynamicArray *array, unsigned int index);
  * Set an element.
  */
 void dyArr_setElement(dynamicArray *array,
-  unsigned int index, const void *element);
+  unsigned int index, void *element);
 
 /*
  * Append an element at the end.
  */
-void dyArr_appendElement(dynamicArray *array, const void *element);
+void dyArr_appendElement(dynamicArray *array, void *element);
 
 /*
  * Concatenate two arrays.
