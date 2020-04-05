@@ -27,13 +27,16 @@ Store a pointer at the specified index.
 #### `dyArr_appendElement()`
 Append a pointer to the back, as the last element.
 
+#### `dyArr_concatenate()`
+Concatenate two arrays and place the result in a new array.
+
 #### `dyArr_removeElement()`
 Remove the pointer at the specified index. This does not free the memory held by
-the element itself at the address inside the removed pointer.
+the element itself at the address inside the removed pointer, so free that first if necessary.
 
 #### `dyArr_removeAllElements()`
 Remove all pointers. This does not free the memory held by the elements
-themselves at the addresses inside the removed pointers.
+themselves at the addresses inside the removed pointers, so free those first if necessary.
 
 #### `dyArr_getCount()`
 Get the total number of elements stored.
@@ -47,8 +50,7 @@ be called if `dyArr_initialize()` was called previously. To avoid a memory
 leak, make the call before reference to the array is lost. Note that this does
 not free the `dynamicArray` instance itself but any memory that it had allocated
 in its lifetime. If the array was created on the heap, the user must still
-manually free that memory. This also does not free the memory used by the data
-itself.
+manually free that memory. This also does not free the memory pointed at by the array elements.
 
 ## Flags
 

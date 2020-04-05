@@ -15,7 +15,7 @@ all: libdynamicArray.a
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-# Make static library string_parser
+# Make static library dynamicArray
 libdynamicArray.a: $(OBJ)
 	ar rcs $@ $^
 	rm -f $^

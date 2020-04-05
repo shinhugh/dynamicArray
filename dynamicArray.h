@@ -12,6 +12,7 @@
 // ------------------------------------------------------------
 
 // Global flags
+// Flags are all reset at the start of every function call.
 
 extern unsigned char DYARR_OUT_OF_BOUNDS;
 
@@ -34,20 +35,26 @@ typedef struct dynamicArray {
  * Return: Element at specified index
  *         0 on out-of-bounds; set DYARR_OUT_OF_BOUNDS
  */
-void * dyArr_getElement(dynamicArray *array, unsigned int index);
+void * dyArr_getElement(const dynamicArray *array, unsigned int index);
 
 /*
  * Set an element.
- * Return: 1 on success
- *         0 on out-of-bounds; set DYARR_OUT_OF_BOUNDS
  */
-unsigned char dyArr_setElement(dynamicArray *array,
-  unsigned int index, void *element);
+void dyArr_setElement(dynamicArray *array,
+  unsigned int index, const void *element);
 
 /*
  * Append an element at the end.
  */
-void dyArr_appendElement(dynamicArray *array, void *element);
+void dyArr_appendElement(dynamicArray *array, const void *element);
+
+/*
+ * Concatenate two arrays.
+ * The contents of array A come previous to those of array B.
+ * Allocates memory for new dynamicArray. Make sure to deinitialize and free.
+ * Return: Address of newly allocated memory for the result dynamicArray
+ */
+dynamicArray * dyArr_concatenate(const dynamicArray *arrayA, const dynamicArray *arrayB);
 
 /*
  * Remove the element at the specified index.
@@ -67,7 +74,7 @@ void dyArr_removeAllElements(dynamicArray *array);
  * Get the number of elements.
  * Return: Number of elements
  */
-unsigned int dyArr_getCount(dynamicArray *array);
+unsigned int dyArr_getCount(const dynamicArray *array);
 
 /*
  * Initialize an array.
